@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.UnivalleNICID" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:statusBarColor">@color/primary_green_dark</item>
+        <item name="android:windowBackground">@color/background_primary</item>
+    </style>
+</resources>

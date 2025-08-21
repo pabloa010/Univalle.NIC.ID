@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Univalle NIC ID</string>
+    
+    <!-- Navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_subjects">Asignaturas</string>
+    <string name="nav_qr_code">Código QR</string>
+    <string name="nav_logout">Cerrar Sesión</string>
+    
+    <!-- Login -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_student_id">Número de Carnet</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="login_error">Credenciales inválidas</string>
+    <string name="login_loading">Verificando...</string>
+    
+    <!-- Home -->
+    <string name="home_welcome">Bienvenido</string>
+    <string name="home_student_info">Información del Estudiante</string>
+    <string name="home_career">Carrera</string>
+    <string name="home_modality">Modalidad</string>
+    <string name="home_status">Estado</string>
+    <string name="home_active">Activo</string>
+    <string name="home_inactive">Inactivo</string>
+    
+    <!-- Subjects -->
+    <string name="subjects_title">Asignaturas Inscritas</string>
+    <string name="subjects_code">Código</string>
+    <string name="subjects_name">Nombre</string>
+    <string name="subjects_teacher">Docente</string>
+    <string name="subjects_credits">Créditos</string>
+    
+    <!-- QR Code -->
+    <string name="qr_title">Mi Código QR</string>
+    <string name="qr_scan">Escanear QR</string>
+    <string name="qr_generate">Generar QR</string>
+    <string name="qr_student_info">Información del Estudiante</string>
+    <string name="qr_valid">Estudiante Válido</string>
+    <string name="qr_invalid">Estudiante No Válido</string>
+    
+    <!-- Modalities -->
+    <string name="modality_day">Diurno</string>
+    <string name="modality_saturday">Sabatino</string>
+    <string name="modality_sunday">Domingo</string>
+    
+    <!-- Careers -->
+    <string name="career_engineering">Ingeniería en Sistemas</string>
+    <string name="career_medicine">Medicina</string>
+    <string name="career_law">Derecho</string>
+    <string name="career_business">Administración de Empresas</string>
+    <string name="career_psychology">Psicología</string>
+    <string name="career_architecture">Arquitectura</string>
+    <string name="career_economics">Economía</string>
+    <string name="career_education">Ciencias de la Educación</string>
+    <string name="career_chemistry">Química</string>
+    <string name="career_biology">Biología</string>
+    
+    <!-- Common -->
+    <string name="loading">Cargando...</string>
+    <string name="error_occurred">Ocurrió un error</string>
+    <string name="retry">Reintentar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
+    <string name="back">Atrás</string>
+</resources>

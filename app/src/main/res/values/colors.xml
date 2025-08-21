@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores principales profesionales y mate -->
+    <color name="primary_green">#2E5D31</color> <!-- Verde oliva mate -->
+    <color name="primary_green_dark">#1B3A1E</color>
+    <color name="primary_green_light">#4F7942</color>
+    
+    <color name="primary_blue">#34495E</color> <!-- Azul pizarra mate -->
+    <color name="primary_blue_dark">#2C3E50</color>
+    <color name="primary_blue_light">#5D6D7E</color>
+    
+    <!-- Colores secundarios sobrios -->
+    <color name="accent_gray">#6C7B7F</color> <!-- Gris azulado -->
+    <color name="accent_charcoal">#454545</color> <!-- Carbón -->
+    <color name="accent_steel">#607D8B</color> <!-- Acero -->
+    <color name="accent_sage">#87A96B</color> <!-- Verde salvia -->
+    <color name="accent_navy">#37474F</color> <!-- Azul marino -->
+    <color name="accent_slate">#455A64</color> <!-- Pizarra -->
+    <color name="accent_taupe">#8D6E63</color> <!-- Taupe -->
+    <color name="accent_pewter">#90A4AE</color> <!-- Peltre -->
+    
+    <!-- Colores de estado profesionales -->
+    <color name="success_green">#388E3C</color> <!-- Verde éxito mate -->
+    <color name="warning_orange">#F57C00</color> <!-- Naranja advertencia mate -->
+    <color name="error_red">#D32F2F</color> <!-- Rojo error mate -->
+    <color name="info_blue">#1976D2</color> <!-- Azul información mate -->
+    
+    <!-- Colores de texto -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_tertiary">#9E9E9E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_on_secondary">#FFFFFF</color>
+    
+    <!-- Colores de fondo neutros -->
+    <color name="background_primary">#F8F9FA</color>
+    <color name="background_secondary">#F1F3F4</color>
+    <color name="background_surface">#FFFFFF</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="background_elevated">#FAFBFC</color>
+    
+    <!-- Colores de bordes sutiles -->
+    <color name="border_light">#E8EAED</color>
+    <color name="border_medium">#DADCE0</color>
+    <color name="border_dark">#BDC1C6</color>
+    
+    <!-- Efectos sutiles -->
+    <color name="shadow_color">#10000000</color>
+    <color name="overlay_color">#60000000</color>
+    <color name="divider_color">#E0E0E0</color>
+    
+    <!-- Colores de carrera profesionales y mate -->
+    <color name="career_medicina">#B71C1C</color> <!-- Rojo granate -->
+    <color name="career_ingenieria">#1A237E</color> <!-- Azul índigo profundo -->
+    <color name="career_derecho">#4A148C</color> <!-- Púrpura profundo -->
+    <color name="career_psicologia">#880E4F</color> <!-- Rosa profundo -->
+    <color name="career_arquitectura">#E65100</color> <!-- Naranja profundo -->
+    <color name="career_economia">#1B5E20</color> <!-- Verde profundo -->
+    <color name="career_educacion">#004D40</color> <!-- Verde azulado profundo -->
+    <color name="career_quimica">#1A237E</color> <!-- Índigo profundo -->
+    <color name="career_biologia">#33691E</color> <!-- Verde lima profundo -->
+    <color name="career_administracion">#3E2723</color> <!-- Marrón profundo -->
+</resources>
