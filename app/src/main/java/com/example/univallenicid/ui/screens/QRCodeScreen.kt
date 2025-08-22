@@ -8,7 +8,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.QrCode
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.univallenicid.R
 import com.example.univallenicid.viewmodel.MainViewModel
-import com.example.univallenicid.viewmodel.UIState
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
@@ -34,7 +34,6 @@ fun QRCodeScreen(
     modifier: Modifier = Modifier
 ) {
     val currentStudent by viewModel.currentStudent.collectAsState()
-    val qrScanResult by viewModel.qrScanResult.collectAsState()
     
     Column(
         modifier = modifier
@@ -177,36 +176,13 @@ fun QRCodeScreen(
             }
             
             // Botones de acción
+            // Botón Generar QR
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Botón Escanear QR
-                Button(
-                    onClick = { viewModel.navigateTo(UIState.QRScanner) },
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary
-                    ),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.QrCodeScanner,
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(R.string.qr_scan),
-                        style = MaterialTheme.typography.bodyMedium.copy(
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                }
-                
-                // Botón Generar QR
                 Button(
                     onClick = { /* QR ya está generado */ },
                     modifier = Modifier.weight(1f),
@@ -229,113 +205,8 @@ fun QRCodeScreen(
                     )
                 }
             }
-            
-            // Resultado del escaneo (si existe)
-            qrScanResult?.let { result ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = if (result.isValid) 
-                            MaterialTheme.colorScheme.primaryContainer 
-                        else 
-                            MaterialTheme.colorScheme.errorContainer
-                    )
-                ) {
-                    Column(
-                        modifier = Modifier.padding(20.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Icon(
-                            imageVector = if (result.isValid) Icons.Default.CheckCircle else Icons.Default.Cancel,
-                            contentDescription = null,
-                            modifier = Modifier.size(48.dp),
-                            tint = if (result.isValid) 
-                                MaterialTheme.colorScheme.primary 
-                            else 
-                                MaterialTheme.colorScheme.error
-                        )
-                        
-                        Spacer(modifier = Modifier.height(16.dp))
-                        
-                        Text(
-                            text = if (result.isValid) 
-                                stringResource(R.string.qr_valid) 
-                            else 
-                                stringResource(R.string.qr_invalid),
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                fontWeight = FontWeight.Bold,
-                                color = if (result.isValid) 
-                                    MaterialTheme.colorScheme.onPrimaryContainer 
-                                else 
-                                    MaterialTheme.colorScheme.onErrorContainer
-                            ),
-                            textAlign = TextAlign.Center
-                        )
-                        
-                        Spacer(modifier = Modifier.height(8.dp))
-                        
-                        Text(
-                            text = result.message,
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                color = if (result.isValid) 
-                                    MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f) 
-                                else 
-                                    MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.8f)
-                            ),
-                            textAlign = TextAlign.Center
-                        )
-                        
-                        result.student?.let { scannedStudent ->
-                            Spacer(modifier = Modifier.height(16.dp))
-                            
-                            Card(
-                                colors = CardDefaults.cardColors(
-                                    containerColor = if (result.isValid) 
-                                        MaterialTheme.colorScheme.primary 
-                                    else 
-                                        MaterialTheme.colorScheme.error
-                                ),
-                                shape = RoundedCornerShape(12.dp)
-                            ) {
-                                Column(
-                                    modifier = Modifier.padding(16.dp),
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Text(
-                                        text = scannedStudent.fullName,
-                                        style = MaterialTheme.typography.bodyLarge.copy(
-                                            fontWeight = FontWeight.Bold,
-                                            color = MaterialTheme.colorScheme.onPrimary
-                                        ),
-                                        textAlign = TextAlign.Center
-                                    )
-                                    
-                                    Text(
-                                        text = "Carnet: ${scannedStudent.studentId}",
-                                        style = MaterialTheme.typography.bodyMedium.copy(
-                                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
-                                        ),
-                                        textAlign = TextAlign.Center
-                                    )
-                                    
-                                    Text(
-                                        text = viewModel.getCareerName(scannedStudent.career),
-                                        style = MaterialTheme.typography.bodyMedium.copy(
-                                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
-                                        ),
-                                        textAlign = TextAlign.Center
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
-        
+
         Spacer(modifier = Modifier.height(16.dp))
     }
 }

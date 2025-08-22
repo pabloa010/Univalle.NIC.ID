@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -28,6 +29,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.univallenicid.R
 import com.example.univallenicid.viewmodel.MainViewModel
+import com.example.univallenicid.viewmodel.UIState
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +41,7 @@ fun LoginScreen(
     val context = LocalContext.current
     val isLoading by viewModel.isLoading.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
+    val qrScanResult by viewModel.qrScanResult.collectAsState()
     
     var studentId by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -58,6 +62,13 @@ fun LoginScreen(
     LaunchedEffect(studentId, password) {
         if (errorMessage != null) {
             viewModel.clearError()
+        }
+    }
+
+    LaunchedEffect(qrScanResult) {
+        if (qrScanResult != null) {
+            delay(3000)
+            viewModel.clearQRResult()
         }
     }
     
@@ -234,7 +245,59 @@ fun LoginScreen(
                     }
                 }
             }
-            
+
+            qrScanResult?.let { result ->
+                Spacer(modifier = Modifier.height(16.dp))
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = if (result.isValid)
+                            MaterialTheme.colorScheme.primaryContainer
+                        else
+                            MaterialTheme.colorScheme.errorContainer
+                    )
+                ) {
+                    Text(
+                        text = result.message,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            color = if (result.isValid)
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            else
+                                MaterialTheme.colorScheme.onErrorContainer
+                        ),
+                        modifier = Modifier.padding(16.dp),
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { viewModel.navigateTo(UIState.QRScanner) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                ),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.QrCodeScanner,
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = stringResource(R.string.qr_scan),
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+            }
+
             // Espacio adicional
             Spacer(modifier = Modifier.height(32.dp))
         }

@@ -180,7 +180,7 @@ class DataRepository {
             email = "maria.mendoza@estudiantes.univalle.edu.ni",
             career = Career.INGENIERIA_SISTEMAS,
             modality = Modality.SABATINO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.INGENIERIA_SISTEMAS]?.take(2) ?: emptyList()
         ),
         Student(
@@ -189,7 +189,7 @@ class DataRepository {
             email = "carlos.silva@estudiantes.univalle.edu.ni",
             career = Career.MEDICINA,
             modality = Modality.DIURNO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.MEDICINA]?.take(2) ?: emptyList()
         ),
         Student(
@@ -198,7 +198,7 @@ class DataRepository {
             email = "ana.torres@estudiantes.univalle.edu.ni",
             career = Career.DERECHO,
             modality = Modality.DOMINGO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.DERECHO]?.take(2) ?: emptyList()
         ),
         Student(
@@ -207,7 +207,7 @@ class DataRepository {
             email = "roberto.vega@estudiantes.univalle.edu.ni",
             career = Career.ADMINISTRACION_EMPRESAS,
             modality = Modality.SABATINO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.ADMINISTRACION_EMPRESAS]?.take(2) ?: emptyList()
         ),
         Student(
@@ -216,7 +216,7 @@ class DataRepository {
             email = "isabella.herrera@estudiantes.univalle.edu.ni",
             career = Career.PSICOLOGIA,
             modality = Modality.DIURNO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.PSICOLOGIA]?.take(2) ?: emptyList()
         ),
         Student(
@@ -225,7 +225,7 @@ class DataRepository {
             email = "fernando.lopez.silva@estudiantes.univalle.edu.ni",
             career = Career.ARQUITECTURA,
             modality = Modality.SABATINO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.ARQUITECTURA]?.take(2) ?: emptyList()
         ),
         Student(
@@ -234,7 +234,7 @@ class DataRepository {
             email = "carmen.vega.rodriguez@estudiantes.univalle.edu.ni",
             career = Career.ECONOMIA,
             modality = Modality.DIURNO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.ECONOMIA]?.take(2) ?: emptyList()
         ),
         Student(
@@ -243,7 +243,7 @@ class DataRepository {
             email = "jorge.herrera.mendoza@estudiantes.univalle.edu.ni",
             career = Career.CIENCIAS_EDUCACION,
             modality = Modality.DOMINGO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.CIENCIAS_EDUCACION]?.take(2) ?: emptyList()
         ),
         Student(
@@ -252,7 +252,7 @@ class DataRepository {
             email = "patricia.perez.vega@estudiantes.univalle.edu.ni",
             career = Career.QUIMICA,
             modality = Modality.SABATINO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.QUIMICA]?.take(2) ?: emptyList()
         ),
         Student(
@@ -261,7 +261,7 @@ class DataRepository {
             email = "luis.rodriguez.herrera@estudiantes.univalle.edu.ni",
             career = Career.BIOLOGIA,
             modality = Modality.DIURNO,
-            status = StudentStatus.ACTIVO,
+            status = StudentStatus.INACTIVO,
             subjects = subjectsByCareer[Career.BIOLOGIA]?.take(2) ?: emptyList()
         )
     )
@@ -298,16 +298,24 @@ class DataRepository {
             val studentId = parts[1]
             val student = students.find { it.studentId == studentId }
             
-            return if (student != null && student.status == StudentStatus.ACTIVO) {
-                QRScanResult(
-                    isValid = true,
-                    student = student,
-                    message = "Estudiante válido y activo"
-                )
+            return if (student != null) {
+                if (student.status == StudentStatus.ACTIVO) {
+                    QRScanResult(
+                        isValid = true,
+                        student = student,
+                        message = "Estudiante activo"
+                    )
+                } else {
+                    QRScanResult(
+                        isValid = false,
+                        student = student,
+                        message = "Estudiante inactivo"
+                    )
+                }
             } else {
                 QRScanResult(
                     isValid = false,
-                    message = "Estudiante no válido o inactivo"
+                    message = "Estudiante no válido"
                 )
             }
         }

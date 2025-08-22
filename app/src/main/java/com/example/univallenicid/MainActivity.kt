@@ -66,7 +66,7 @@ fun UnivalleNICIDApp() {
                 is UIState.QRScanner -> {
                     QRScannerScreen(
                         viewModel = viewModel,
-                        onNavigateBack = { viewModel.navigateTo(UIState.QRCode) }
+                        onNavigateBack = { viewModel.navigateTo(UIState.Login) }
                     )
                 }
             }
