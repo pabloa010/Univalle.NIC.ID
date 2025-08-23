@@ -60,17 +60,17 @@ private val LightColorScheme = lightColorScheme(
 
 private val DarkColorScheme = darkColorScheme(
     primary = Color(0xFF4F7942), // Verde mate para modo oscuro
-    onPrimary = Color(0xFF1B3A1E),
+    onPrimary = Color.White,
     primaryContainer = Color(0xFF2E5D31), // Verde principal mate
     onPrimaryContainer = Color(0xFFE8F5E8),
-    
+
     secondary = Color(0xFF5D6D7E), // Azul pizarra para modo oscuro
-    onSecondary = Color(0xFF2C3E50),
+    onSecondary = Color.White,
     secondaryContainer = Color(0xFF34495E), // Azul principal mate
     onSecondaryContainer = Color(0xFFE4E9F2),
-    
+
     tertiary = Color(0xFF90A4AE), // Gris azulado para modo oscuro
-    onTertiary = Color(0xFF454545),
+    onTertiary = Color.Black,
     tertiaryContainer = Color(0xFF6C7B7F), // Gris principal mate
     onTertiaryContainer = Color(0xFFF0F2F3),
     

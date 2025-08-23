@@ -43,7 +43,8 @@ fun HomeScreen(
                     .padding(16.dp),
                 shape = RoundedCornerShape(12.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = getCareerColor(student.career)
+                    containerColor = getCareerColor(student.career),
+                    contentColor = Color.White
                 ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
@@ -78,8 +79,7 @@ fun HomeScreen(
                     Text(
                         text = student.fullName,
                         style = MaterialTheme.typography.headlineSmall.copy(
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            fontWeight = FontWeight.Bold
                         ),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(bottom = 8.dp)
@@ -89,7 +89,7 @@ fun HomeScreen(
                     Text(
                         text = "Carnet: ${student.studentId}",
                         style = MaterialTheme.typography.bodyLarge.copy(
-                            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
+                            color = Color.White.copy(alpha = 0.9f)
                         ),
                         textAlign = TextAlign.Center
                     )
@@ -198,15 +198,15 @@ fun HomeScreen(
                         // Badge con número de asignaturas
                         Card(
                             colors = CardDefaults.cardColors(
-                                containerColor = getCareerColor(student.career)
+                                containerColor = getCareerColor(student.career),
+                                contentColor = Color.White
                             ),
                             shape = RoundedCornerShape(16.dp)
                         ) {
                             Text(
                                 text = "${student.subjects.size}",
                                 style = MaterialTheme.typography.bodyMedium.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onPrimary
+                                    fontWeight = FontWeight.Bold
                                 ),
                                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                             )
@@ -254,22 +254,21 @@ fun HomeScreen(
                         .weight(1f)
                         .height(48.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = getCareerColor(student.career)
+                        containerColor = getCareerColor(student.career),
+                        contentColor = Color.White
                     ),
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.QrCode,
                         contentDescription = null,
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onPrimary
+                        modifier = Modifier.size(20.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = stringResource(R.string.nav_qr_code),
                         style = MaterialTheme.typography.bodyMedium.copy(
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            fontWeight = FontWeight.Medium
                         )
                     )
                 }

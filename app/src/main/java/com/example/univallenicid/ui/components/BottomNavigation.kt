@@ -149,8 +149,8 @@ fun BottomNavigation(
                     )
                 },
                 selected = false,
-                onClick = { 
-                    viewModel.navigateTo(UIState.Login)
+                onClick = {
+                    viewModel.logout()
                 },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.error,
